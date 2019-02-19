@@ -40,6 +40,15 @@ app.get("/survey", function(req, res) {
       res.render("survey", { question: data });
     });
   });
+app.get("/match", function(req, res) {
+      if (err) throw err;
+      res.render("match", { 
+                            picture: 'pic',
+                            name: 'name',
+                            age: 'age' 
+                        });
+  });
+
 app.post("/", function(req, res) {
     console.log('You sent, ' + JSON.stringify(req.body));
     connection.query("INSERT INTO user_info SET ?", {
@@ -49,6 +58,7 @@ app.post("/", function(req, res) {
                                                     }, 
     function(err, result) {
         if (err) throw err;
+
         res.redirect("/survey");
       });
 });
@@ -75,3 +85,4 @@ app.post("/survey", function(req, res) {
 app.listen(PORT, function() {
   console.log("app listening on: http://localhost:" + PORT);
 });
+
