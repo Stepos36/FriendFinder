@@ -3,17 +3,17 @@ var exphbs = require("express-handlebars");
 var path = require("path")
 var mysql = require("mysql")
 
-
-
-
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.set('views',  path.join(__dirname+'/app/views'));
+app.engine("handlebars", exphbs({
+    defaultLayout: "main",
+    layoutsDir:'app/views/layouts'
+    }));
+ app.set("view engine", "handlebars");
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -38,3 +38,8 @@ app.get("/", function(req, res) {
       res.render("index", { question: data });
     });
   });
+  
+
+app.listen(PORT, function() {
+  console.log("app listening on: http://localhost:" + PORT);
+});
