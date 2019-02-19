@@ -33,7 +33,7 @@ connection.connect(function(err) {
 });
 
 app.get("/", function(req, res) {
-    connection.query("SELECT * FROM myWishes;", function(err, data) {
+    connection.query("SELECT * FROM questions;", function(err, data) {
       if (err) throw err;
       res.render("index", { question: data });
     });
