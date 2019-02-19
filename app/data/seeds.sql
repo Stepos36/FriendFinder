@@ -16,5 +16,5 @@ VALUES  ("Alex", 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/interm
 
 INSERT INTO user_answers (answer1,answer2,answer3,answer4,answer5,answer6,answer7,answer8,answer9,answer10, user_id)
 VALUES  (4,5,1,7,9,4,6,7,8,3,'1'),
-        (10,10,3,6,4,8,9,5,3,'2'),
+        (10,10,3,6,5,4,8,9,5,3,'2'),
         (4,5,1,8,4,2,8,9,5,3,'3')
