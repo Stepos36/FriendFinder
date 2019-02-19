@@ -1,0 +1,18 @@
+<h1>Welcome to Friend Finder</h1>
+
+<h3>Answer the questions to match with potential friend</h3>
+
+<ul>
+  {{#each question}}
+  	<li>
+  	   <p>ID: {{this.}}</p>
+       <p>Wish: {{this.task}}</p>
+  	</li>
+  {{/each}}
+</ul>
+
+<form action="/" method="POST">
+	<textarea type="text" name="answers"></textarea>
+
+	<button type="submit">Submit</button>
+</form>
