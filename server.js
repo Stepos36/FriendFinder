@@ -8,6 +8,7 @@ var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/app/public')));
 app.set('views',  path.join(__dirname+'/app/views'));
 app.engine("handlebars", exphbs({
     defaultLayout: "main",
@@ -32,11 +33,14 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-app.get("/", function(req, res) {
+app.get("/survey", function(req, res) {
     connection.query("SELECT * FROM questions;", function(err, data) {
       if (err) throw err;
-      res.render("index", { question: data });
+      res.render("survey", { question: data });
     });
+  });
+app.get("/", function(req, res) {
+    res.render("index", { question: data });
   });
   
 

@@ -5,14 +5,12 @@
 <ul>
   {{#each question}}
   	<li>
-  	   <p>Question #: {{this.id}}</p>
-       <p>{{this.question}}</p>
+  	   <p>Question #{{this.id}}</p>
+       <p class="font-weight-bold">{{this.question}}</p>
+			 <div class="slider"></div>
   	</li>
   {{/each}}
 </ul>
-
 <form action="/" method="POST">
-	<textarea type="text" name="answers"></textarea>
-
 	<button type="submit">Submit</button>
 </form>
