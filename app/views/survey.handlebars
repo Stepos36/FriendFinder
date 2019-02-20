@@ -1,16 +1,27 @@
 <h1>Welcome to Friend Finder</h1>
 
-<h3>Answer the questions to match with potential friend</h3>
-
-<ul>
+<h3>Answer the questions to match with your potential friend</h3>
+<form action="/survey" method="POST">
+<ul class="questionList">
   {{#each question}}
-  	<li>
+  	<li >
   	   <p>Question #{{this.id}}</p>
        <p class="font-weight-bold">{{this.question}}</p>
-			 <div class="slider"></div>
+			 <div id="slider{{this.id}}" class="slider"></div>
+			 <input value='' class="input{{this.id}}" name='answer{{this.id}}' type="hidden">
   	</li>
   {{/each}}
 </ul>
-<form action="/" method="POST">
-	<button type="submit">Submit</button>
+	<input class="submit" type="submit" value="Submit">
 </form>
+
+<script>
+	$(document).ready(function() {
+		
+	$(document).on('mouseover', '.submit', function() {
+		for(var i=1;i<11;i++) {
+			$(`.input${i}`).attr('value', $(`#slider${i}`).slider( "value" ))
+	}
+	})
+	})
+</script>

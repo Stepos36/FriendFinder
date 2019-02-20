@@ -4,6 +4,10 @@ var express = require("express");
     mysql = require("mysql")
     app = express();
     PORT = process.env.PORT || 3000;
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -61,25 +65,35 @@ app.post("/", function(req, res) {
 
         res.redirect("/survey");
       });
+    localStorage.setItem('username', req.body.name);
+    localStorage.setItem('picture_url', req.body.pic);
+    localStorage.setItem('age', req.body.age);
 });
 app.post("/survey", function(req, res) {
+  var userId
     console.log('You sent, ' + JSON.stringify(req.body));
+    connection.query("SELECT id FROM user_info WHERE username=? AND age = ?", [localStorage.getItem('username'),localStorage.getItem('age')],
+     function(err, data) {
+      if (err) throw err;
+      userId =(data[0].id)
     connection.query("INSERT INTO user_answers SET ?", {
-                                                        'answer 1': req.body.answer1,
-                                                        'answer 2': req.body.answer2,
-                                                        'answer 3': req.body.answer3,
-                                                        'answer 4': req.body.answer4,
-                                                        'answer 5': req.body.answer5,
-                                                        'answer 6': req.body.answer6,
-                                                        'answer 7': req.body.answer7,
-                                                        'answer 8': req.body.answer8,
-                                                        'answer 9': req.body.answer9,
-                                                        'answer 10': req.body.answer10,
+                                                        'answer1': req.body.answer1,
+                                                        'answer2': req.body.answer2,
+                                                        'answer3': req.body.answer3,
+                                                        'answer4': req.body.answer4,
+                                                        'answer5': req.body.answer5,
+                                                        'answer6': req.body.answer6,
+                                                        'answer7': req.body.answer7,
+                                                        'answer8': req.body.answer8,
+                                                        'answer9': req.body.answer9,
+                                                        'answer10': req.body.answer10,
+                                                        'user_id': userId
                                                     }, 
     function(err, result) {
     if (err) throw err;
     res.redirect("/match");
 });
+})
 });
 
 app.listen(PORT, function() {
