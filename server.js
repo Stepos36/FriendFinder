@@ -39,18 +39,22 @@ app.get("/", function(req, res) {
     res.render("index");
   });
 app.get("/survey", function(req, res) {
-    connection.query("SELECT * FROM questions;", function(err, data) {
+    connection.query("SELECT * FROM questions", function(err, data) {
       if (err) throw err;
       res.render("survey", { question: data });
     });
   });
 app.get("/match", function(req, res) {
-      if (err) throw err;
-      res.render("match", { 
-                            picture: 'pic',
-                            name: 'name',
-                            age: 'age' 
-                        });
+  var id = 3;
+  //var id = localStorage.getItem('matchId')
+  connection.query("SELECT * FROM user_info WHERE id=?", id, function(err, data) {
+    res.render("match", { 
+      picture: data[0].picture_url,
+      name: data[0].username,
+      age: data[0].age 
+  });
+  })
+      
   });
 
 app.post("/", function(req, res) {
@@ -76,6 +80,7 @@ app.post("/survey", function(req, res) {
      function(err, data) {
       if (err) throw err;
       userId =(data[0].id)
+    
     connection.query("INSERT INTO user_answers SET ?", {
                                                         'answer1': req.body.answer1,
                                                         'answer2': req.body.answer2,
@@ -92,6 +97,8 @@ app.post("/survey", function(req, res) {
     function(err, result) {
     if (err) throw err;
     res.redirect("/match");
+
+    //localStorage.setItem('matchId',data[0].id )
 });
 })
 });
