@@ -4,6 +4,7 @@
   "description": "A compatibility-based \"FriendFinder\" application - basically a dating app. This full-stack site takes in results from users' surveys, then compares their answers with those from other users. Then this app displays the name and picture of the user with the best overall match.",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "mysql": "^2.16.0",
