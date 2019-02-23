@@ -1,5 +1,11 @@
+body {
+    background: url(../images/background.gif);
+    background-size: cover;
+}
+
 .slider {
-    max-width:30%
+    max-width:100%;
+    display: block;    
 }
 
 #input {
@@ -18,8 +24,48 @@
 .topbar {
     background-color: rgba(24,24,24, 0.95)
 }
-
+.topbar-link {
+    margin: auto auto;
+    color: white;
+    text-decoration: none;
+}
+.topbar-link:hover {
+    color: rgb(227,160,142);
+    text-decoration: none;
+}
 #ff {
     max-height: 130px;
     display: flex;
+}
+.card {
+    border: 4px solid rgba(19,144,148, 0.8);
+    border-radius: 20px;
+}
+.card-picture {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.main-container {
+    border: 4px solid rgba(19,144,148, 0.7);
+    background-color: rgba(185,225,227, 0.8);
+    border-radius: 40px;
+    padding: 30px
+}
+.matchPic {
+    max-height: 700px;
+    max-width: 400px;
+    border: 4px solid rgba(19,144,148, 0.8);
+    border-radius: 15px;
+}
+
+.on-file {
+    border-radius: 10px;
+    padding: 15px;
+    border: 4px solid rgba(19,144,148, 0.7);
+    background-color: rgba(185,225,227, 0.8);
+    font-size:17px
+}
+.index-span {
+    width:80%
 }

@@ -1,14 +1,19 @@
-var compareValues = require('./apiRoutes.js')
-
 var routes = function() {
 
     app.get("/", function (req, res) {
-      res.render("index");
+      localStorage.setItem('matchID', '')
+      if(localStorage.getItem('username')) {res.redirect('/survey')}
+      else {res.render("index");}
     });
     app.get("/survey", function (req, res) {
       connection.query("SELECT * FROM questions", function (err, data) {
         if (err) throw err;
-        res.render("survey", { question: data });
+        res.render("survey", { 
+                              question: data, 
+                              name: localStorage.getItem('username'),
+                              age: localStorage.getItem('age'),
+                              pic: localStorage.getItem('picture_url') 
+                            });
       });
     });
     app.get("/match", function (req, res) {
@@ -20,7 +25,11 @@ var routes = function() {
           age: data[0].age
         });
       })
-  
+    });
+    app.get("/all", function (req, res) {
+      connection.query("SELECT * FROM user_info", function (err, data) {
+        res.render("all", {people:data});
+      })
     });
     
     app.post("/", function (req, res) {
@@ -68,7 +77,54 @@ var routes = function() {
             });
         })
     });
-
+    app.post("/dropname", function (req, res) {
+      localStorage.setItem('username', '');
+      localStorage.setItem('picture_url','');
+      localStorage.setItem('age', '');
+      res.redirect("/");
+    })
 }
+var compareValues =function(answerArr) {
+  console.log('hi')
+  connection.query("SELECT * FROM user_answers", function (err, data) {
+    var dataArr = []
+        result = 0
+        resultScore = 0
+        resultArr = []
+        parsedData = []
+        scoresArray = []
+        matchIndex = 0
+        matchIndex = 0
+        for (var j = 0; j < data.length; j++) {
+          dataArr.push(data[j].answers)
+        }
+        for (var k = 0; k < dataArr.length; k++) {
+          resultScore = 0
+          resultArr = []
+          parsedData = JSON.parse(dataArr[k])
+          result = 0
+          for (var i = 0; i < answerArr.length; i++) {
+            result = 0
+            result = parsedData[i] - answerArr[i]
+            if (result < 0) { result = result * (-1) }
+            resultArr.push(result)
+          }
+          for (var z = 0; z < resultArr.length; z++) {
+            resultScore += resultArr[z]
+          }
+          scoresArray.push(resultScore)  
+        }
+        matchScore = (Array.min(scoresArray))
+        matchIdex = scoresArray.indexOf(matchScore)
+        userSearchParameter = data[matchIdex].user_id
+        connection.query("SELECT * FROM user_info WHERE id =?", userSearchParameter, function(err, data) {
+          localStorage.setItem('matchId',data[0].id )
+        })
+      })
 
+  }
+
+Array.min = function( array ){
+  return Math.min.apply( Math, array );
+};
 module.exports = routes

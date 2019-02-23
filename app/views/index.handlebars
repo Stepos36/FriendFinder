@@ -1,14 +1,27 @@
+<h1 class="text-center text-white">Hello, Welcome to Friend Finder!</h1>
+<br/>
 <div class="container main-container">
     <div id="input" class="row">
         <form id="input-form" action="/" method="POST">
-            <label id="name-input-label" for="username">Please, enter your name: </label>
-            <input name="name" type="text" id="name-input">
-            <label id="age-input-label" for="age">Please, select your age: </label>
-            <input name="age" type="number" id="age-input" min="18" max="100">
-            <label id="pic-input-label" for="pic">Please, insert a link to your picture: </label>
-            <input name="pic" type="text" id="pic-input">
-            <input id="submitter" class="input-line" type="submit" value="Take survey">
+            <p><label class="index-span" id="name-input-label" for="username">Please, enter your name: </label>
+            <input class="index-span input" name="name" type="text" id="name-input"></p>
+            <p><label class="index-span" id="age-input-label" for="age">Please, select your age: </label>
+            <input class="index-span input" name="age" type="number" id="age-input" min="18" max="100"></p>
+            <p><label class="index-span" id="pic-input-label" for="pic">Please, insert a link to your picture: </label>
+            <input class="index-span input" name="pic" type="text" id="pic-input"></p>
+            <input class="index-span" id="submitter" class="input-line" type="submit" value="Take survey">
         </form>
     </div>
     <div id="user-display"></div>
 </div>
+
+<script>
+	$(document).ready(function() {
+		$(document).on('mouseover', '#submitter', function() {
+			if(($(".input").val()==0)||(trim($(".input").val())==0)){$('#input-form').append('<h4 class="warning" style="color:red; font-weight:700"><br/>Please, fill all the inputs on the page</h4>')}
+		});
+        $(document).on('mouseout', '#submitter', function() {
+			$('.warning').hide()
+		});
+	})
+</script>

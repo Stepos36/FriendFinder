@@ -1,27 +1,50 @@
-<h1>Welcome to Friend Finder</h1>
-
-<h3>Answer the questions to match with your potential friend</h3>
-<form action="/survey" method="POST">
-<ul class="questionList">
-  {{#each question}}
-  	<li >
-  	   <p>Question #{{this.id}}</p>
-       <p class="font-weight-bold">{{this.question}}</p>
-			 <div id="slider{{this.id}}" class="slider"></div>
-			 <input value='' class="input{{this.id}}" name='answer{{this.id}}' type="hidden">
-  	</li>
-  {{/each}}
-</ul>
-	<input class="submit" type="submit" value="Submit">
-</form>
-
+<h1 class="text-center text-white">Hi, {{name}}, Welcome to Friend Finder!</h1>
+<br/>
+<div class="container main-container">
+	<div class="row">
+		<div class="col-md-9">
+			<h3 class="text-center">Answer the questions to match with your potential friend</h3>
+			<br/>
+			<form action="/survey" method="POST">
+			<ul class="questionList">
+			  {{#each question}}
+			  	<li >
+			  	   <p class="font-italic">Question #{{this.id}}:</p>
+			       <p class="font-weight-bold text-center">"{{this.question}}"</p>
+						 <div id="slider{{this.id}}" class="slider"></div>
+						 <input value='' class="input{{this.id}}" name='answer{{this.id}}' type="hidden">
+			  	</li>
+				  <br/> <br/>
+			  {{/each}}
+			</ul>
+				<input class="submit" type="submit" value="Submit">
+			</form>
+		</div>
+		<div class="col-md-3">
+			<div class="card">
+				<div>
+					<img class="card-picture" src="{{pic}}">
+				</div>
+				<div class="card-body">
+					<p class="text-center">{{name}}</p>
+					<p class="text-center">{{age}} years old</p>
+				</div>
+				<br/>
+				<p>
+					<form action="/dropname" class="text-center font-italic not-me" method="POST">
+						<input class="submit" type="submit" value="This is not me!">
+					</form>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
 	$(document).ready(function() {
-		
-	$(document).on('mouseover', '.submit', function() {
-		for(var i=1;i<11;i++) {
-			$(`.input${i}`).attr('value', $(`#slider${i}`).slider( "value" ))
-	}
-	})
+		$(document).on('mouseover', '.submit', function() {
+			for(var i=1;i<11;i++) {
+				$(`.input${i}`).attr('value', $(`#slider${i}`).slider( "value" ))
+			}
+		});
 	})
 </script>
