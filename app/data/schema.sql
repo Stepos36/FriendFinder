@@ -21,16 +21,7 @@ PRIMARY KEY (id)
 CREATE TABLE user_answers 
 (
 user_id int NOT NULL,
-answer1 int NOT NULL,
-answer2 int NOT NULL,
-answer3 int NOT NULL,
-answer4 int NOT NULL,
-answer5 int NOT NULL,
-answer6 int NOT NULL,
-answer7 int NOT NULL,
-answer8 int NOT NULL,
-answer9 int NOT NULL,
-answer10 int NOT NULL,
+answers JSON NOT NULL,
 INDEX par_ind (user_id),
 FOREIGN KEY (user_id)
         REFERENCES user_info(id)

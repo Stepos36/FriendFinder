@@ -14,7 +14,7 @@ VALUES  ("Alex", 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/interm
         ("Marsha", 'https://s3-us-west-2.amazonaws.com/images.cms.byutv.org/f45a2a4e-d5b5-d32f-37ab-57fd35a88bb0-lisa-1.jpg', 32),
         ("Paresh", 'https://i1.wp.com/chartcons.com/wp-content/uploads/random.jpg?resize=1021%2C580&ssl=1', 41);
 
-INSERT INTO user_answers (answer1,answer2,answer3,answer4,answer5,answer6,answer7,answer8,answer9,answer10, user_id)
-VALUES  (4,5,1,7,9,4,6,7,8,3,'1'),
-        (10,10,3,6,5,4,8,9,5,3,'2'),
-        (4,5,1,8,4,2,8,9,5,3,'3')
+INSERT INTO user_answers (answers, user_id)
+VALUES  ("[4,5,1,7,9,4,6,7,8,3]",'1'),
+        ("[10,10,3,6,5,4,8,9,5,3]",'2'),
+        ("[4,5,1,8,4,2,8,9,5,3]",'3')
