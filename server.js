@@ -22,4 +22,7 @@ require('./app/routing/htmlRoutes.js')(app);
 require('./app/routing/apiRoutes.js')(app);
 require('./config/connection.js')
 
+app.listen(PORT, function () {
+  console.log("app listening on: http://us-cdbr-iron-east-03.cleardb.net:" + PORT);
+});
 
