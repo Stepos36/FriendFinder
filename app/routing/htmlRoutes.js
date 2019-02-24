@@ -19,6 +19,7 @@ var routes = function() {
     app.get("/match", function (req, res) {
       var id = localStorage.getItem('matchId')
       connection.query("SELECT * FROM user_info WHERE id=?", id, function (err, data) {
+        console.log(data)
         res.render("match", {
           picture: data[0].picture_url,
           name: data[0].username,
@@ -55,18 +56,19 @@ var routes = function() {
         function (err, data) {
           if (err) throw err;
           userId = (data[0].id)
-          answerArr = [parseInt(req.body.answer1),
-          parseInt(req.body.answer2),
-          parseInt(req.body.answer3),
-          parseInt(req.body.answer4),
-          parseInt(req.body.answer5),
-          parseInt(req.body.answer6),
-          parseInt(req.body.answer7),
-          parseInt(req.body.answer8),
-          parseInt(req.body.answer9),
-          parseInt(req.body.answer10)
+          answerArr = [parseInt(req.body.answer2),
+          parseInt(req.body.answer12),
+          parseInt(req.body.answer22),
+          parseInt(req.body.answer32),
+          parseInt(req.body.answer42),
+          parseInt(req.body.answer52),
+          parseInt(req.body.answer62),
+          parseInt(req.body.answer72),
+          parseInt(req.body.answer82),
+          parseInt(req.body.answer92)
           ]
           compareValues(answerArr)
+          console.log(localStorage.getItem('matchID'))
           connection.query("INSERT INTO user_answers SET ?", {
             'answers': JSON.stringify(answerArr),
             'user_id': userId
@@ -117,9 +119,7 @@ var compareValues =function(answerArr) {
         matchScore = (Array.min(scoresArray))
         matchIdex = scoresArray.indexOf(matchScore)
         userSearchParameter = data[matchIdex].user_id
-        connection.query("SELECT * FROM user_info WHERE id =?", userSearchParameter, function(err, data) {
-          localStorage.setItem('matchId',data[0].id )
-        })
+        localStorage.setItem('matchId',userSearchParameter )
       })
 
   }
