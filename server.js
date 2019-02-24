@@ -1,6 +1,6 @@
 var express = require("express");
     exphbs = require("express-handlebars");
-    path = require("path")
+    path = require("path");
     app = express();
     bodyParser = require("body-parser");
 if (typeof localStorage === "undefined" || localStorage === null) {
@@ -21,8 +21,6 @@ app.set("view engine", "handlebars");
 require('./app/routing/htmlRoutes.js')(app);
 require('./app/routing/apiRoutes.js')(app);
 require('./config/connection.js')
-
-
 
 app.listen(PORT, function () {
   console.log("app listening on: http://localhost:" + PORT);
