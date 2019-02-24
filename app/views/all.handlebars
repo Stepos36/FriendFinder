@@ -2,14 +2,14 @@
 <br/>
 <div class="container main-container">
 	<div class="row">
-			  {{#each people}}
-		<div class="col-md-3" style="height: 350px">
-            <div class="on-file" >
-			        <p class="text-center"><img class="text-center" style='width:150px;max-height:200px'src={{picture_url}}></p>
-                    <p class="text-center">{{username}}</p>
-                    <p class="text-center">Age: {{age}}</p>
-            </div>
-		</div>
-			  {{/each}}
+		{{#each people}}
+		  <div class="col-md-3" style="height: 350px">
+              <div class="on-file" >
+		  	        <p class="text-center"><img class="text-center" style='width:150px;max-height:200px'src={{picture_url}}></p>
+                      <p class="text-center">{{username}}</p>
+                      <p class="text-center">Age: {{age}}</p>
+              </div>
+		  </div>
+		{{/each}}
 	</div>
 </div>

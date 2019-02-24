@@ -16,12 +16,25 @@
 </div>
 
 <script>
-	$(document).ready(function() {
-		$(document).on('mouseover', '#submitter', function() {
-			if(($(".input").val()==0)||(trim($(".input").val())==0)){$('#input-form').append('<h4 class="warning" style="color:red; font-weight:700"><br/>Please, fill all the inputs on the page</h4>')}
-		});
-        $(document).on('mouseout', '#submitter', function() {
-			$('.warning').hide()
-		});
-	})
+	$(document).ready(function(){
+    $('#submitter').attr('disabled',true);
+    $('#pic-input' ).keyup(function(){
+        if(($(this).val().length !=0)&&($('#name-input').val().length !=0)&&($('#age-input').val().length !=0))
+            $('#submitter').attr('disabled', false);            
+        else
+            $('#submitter').attr('disabled',true);
+    })
+    $('#age-input' ).keyup(function(){
+        if(($(this).val().length !=0)&&($('#name-input').val().length !=0)&&($('#pic-input').val().length !=0))
+            $('#submitter').attr('disabled', false);            
+        else
+            $('#submitter').attr('disabled',true);
+    })
+    $('#name-input' ).keyup(function(){
+        if(($(this).val().length !=0)&&($('#pic-input').val().length !=0)&&($('#age-input').val().length !=0))
+            $('#submitter').attr('disabled', false);            
+        else
+            $('#submitter').attr('disabled',true);
+    })
+});
 </script>
