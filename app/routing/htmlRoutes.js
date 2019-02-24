@@ -2,8 +2,10 @@ var routes = function() {
 
     app.get("/", function (req, res) {
       localStorage.setItem('matchID', '')
-      if(localStorage.getItem('username')) {res.redirect('/survey')}
-      else {res.render("index");}
+      localStorage.setItem('username', '');
+      localStorage.setItem('picture_url','');
+      localStorage.setItem('age', '');
+      res.render("index");
     });
     app.get("/survey", function (req, res) {
       connection.query("SELECT * FROM questions", function (err, data) {
