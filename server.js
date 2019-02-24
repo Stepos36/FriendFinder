@@ -26,3 +26,6 @@ app.listen(PORT, function () {
   console.log("app listening on: http://us-cdbr-iron-east-03.cleardb.net:" + PORT);
 });
 
+setInterval(function () {
+    connection.query('SELECT 1');
+}, 5000);
