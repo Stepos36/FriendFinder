@@ -1,5 +1,5 @@
 var mysql = require("mysql")
-    PORT = process.env.PORT || 3000;
+    PORT = process.env.PORT || 8080;
     connection = mysql.createConnection({
       host: "us-cdbr-iron-east-03.cleardb.net",
       port: 3306,
