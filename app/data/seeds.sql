@@ -1,7 +1,7 @@
 -- INSERT INTO questions (question) VALUES ('It is so easy to get out of bed in the morning for me');
 -- INSERT INTO questions (question) VALUES ('I love my job');
 -- INSERT INTO questions (question) VALUES ('Good food is one of the biggest pleasures in my life');
--- INSERT INTO questions (question) VALUES ('Money is the my biggest motivator');
+-- INSERT INTO questions (question) VALUES ('Money is my biggest motivator');
 -- INSERT INTO questions (question) VALUES ('Pets are adorable');
 -- INSERT INTO questions (question) VALUES ('Family should be the first and only value for everyone');
 -- INSERT INTO questions (question) VALUES ("Everyone's opinion must be heard and respected");
@@ -29,7 +29,7 @@ VALUES  ("Alex", 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/interm
 INSERT INTO questions (question) VALUES ('It is so easy to get out of bed in the morning for me');
 INSERT INTO questions (question) VALUES ('I love my job');
 INSERT INTO questions (question) VALUES ('Good food is one of the biggest pleasures in my life');
-INSERT INTO questions (question) VALUES ('Money is the my biggest motivator');
+INSERT INTO questions (question) VALUES ('Money is my biggest motivator');
 INSERT INTO questions (question) VALUES ('Pets are adorable');
 INSERT INTO questions (question) VALUES ('Family should be the first and only value for everyone');
 INSERT INTO questions (question) VALUES ("Everyone's opinion must be heard and respected");

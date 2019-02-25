@@ -9,6 +9,7 @@
             <input class="index-span input" name="age" type="number" id="age-input" min="18" max="100"></p>
             <p><label class="index-span" id="pic-input-label" for="pic">Please, insert a link to your picture: </label>
             <input class="index-span input" name="pic" type="text" id="pic-input"></p>
+            <br/>
             <input class="index-span" id="submitter" class="input-line" type="submit" value="Take survey">
         </form>
     </div>
@@ -18,12 +19,6 @@
 <script>
 	$(document).ready(function(){
     $('#submitter').attr('disabled',true);
-    $('#pic-input' ).keyup(function(){
-        if(($(this).val().length !=0)&&($('#name-input').val().length !=0)&&($('#age-input').val().length !=0))
-            $('#submitter').attr('disabled', false);            
-        else
-            $('#submitter').attr('disabled',true);
-    })
     $('#age-input' ).keyup(function(){
         if(($(this).val().length !=0)&&($('#name-input').val().length !=0)&&($('#pic-input').val().length !=0))
             $('#submitter').attr('disabled', false);            
@@ -32,6 +27,12 @@
     })
     $('#name-input' ).keyup(function(){
         if(($(this).val().length !=0)&&($('#pic-input').val().length !=0)&&($('#age-input').val().length !=0))
+            $('#submitter').attr('disabled', false);            
+        else
+            $('#submitter').attr('disabled',true);
+    })
+    $(document).on('mouseover', 'body', function(){
+        if(($('#pic-input').val().length !=0)&&($('#name-input').val().length !=0)&&($('#age-input').val().length !=0))
             $('#submitter').attr('disabled', false);            
         else
             $('#submitter').attr('disabled',true);
